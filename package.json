@@ -1,0 +1,37 @@
+{
+  "name": "terminal-resume",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": ["cv", "resume"],
+  "license": "MIT",
+  "author": "Yutong Luo",
+  "scripts": {
+    "clean:output": "rimraf dist",
+    "build": "npm run clean:output && parcel build index.html",
+    "dev": "parcel index.html --open",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "zip": "cd dist && zip -rX website.zip * && mv website.zip .. && cd ..",
+    "publish": "npm run build && npm run zip",
+    "analyze": "parcel build index.html --reporter @parcel/reporter-bundle-analyzer"
+  },
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "devDependencies": {
+    "@parcel/compressor-gzip": "^2.8.0",
+    "@parcel/reporter-bundle-analyzer": "^2.8.0",
+    "@tsconfig/strictest": "^1.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "buffer": "^5.7.1",
+    "eslint": "^8.28.0",
+    "eslint-config-standard-with-typescript": "^23.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.5.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "jquery": "3.6.1",
+    "parcel": "^2.8.0",
+    "typescript": "^4.9.3"
+  },
+  "dependencies": {
+    "jQuery": "npm:jquery@^3.6.1",
+    "jquery.terminal": "^2.34.0"
+  }
+}
