@@ -1,7 +1,7 @@
-import { Experience } from './experience'
+import { Experience } from '../sections/experience'
 import { formatText } from './style'
 import resume from '../resume.json'
-import { Basics } from './basics'
+import { Basics } from '../sections/basics'
 
 export class ResumeHelper {
   getWork (): string {
@@ -29,24 +29,6 @@ export class ResumeHelper {
       str += basics.toString()
     }
     return str
-  }
-
-  printBasicInfo (): () => void {
-    return function (this: any) {
-      if (resume === undefined) {
-        this.error('No resume.json found')
-        return
-      }
-      const basics = resume.basics
-      this.echo(formatText('heading', 'Basic info:'))
-      this.echo(formatText('bold', 'Name: ') + basics.name)
-      if (basics.label !== undefined && basics.label !== '') {
-        this.echo(formatText('bold', 'Role: ') + basics.label)
-      }
-      if (basics.email !== undefined && basics.email !== '') {
-        this.echo(formatText('bold', 'Email: ') + basics.email)
-      }
-    }
   }
 
   private formatExperience (experiences: any): string {

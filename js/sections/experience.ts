@@ -1,6 +1,6 @@
-import * as style from './style'
+import * as style from '../lib/style'
 import { ColWidth } from '../config'
-import { hasContent } from './utils'
+import { hasContent } from '../lib/utils'
 
 type JsonExperience = {
   position: string

@@ -22,6 +22,10 @@ export function formatBullet (text: string): string {
   return '* ' + splitLines(text, BulletPtIndent)
 }
 
+export function createLink (text: string, url: string): string {
+  return `[[bu!;#6c71c4;;;${url}]${text}]`
+}
+
 /**
   * splits lines by words when line width exceeds global colWidth
   * @param str string to split
