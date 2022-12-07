@@ -54,7 +54,6 @@ export class Basics {
 
   public toString = (): string => {
     let str = ''
-    str += formatText('heading', 'Basic info:\n')
     str += formatText('bold', 'Name: ') + this.basics.name + '\n'
     if (hasContent(this.basics.label)) {
       str += `${formatText('bold', 'Role: ')}${this.basics.label as string}\n`

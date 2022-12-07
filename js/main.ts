@@ -12,9 +12,8 @@ const resumeHelper = new ResumeHelper()
 $(document).ready(function () {
   $('#term').terminal(
     {
-      version: '0.1',
       help: function () {
-        this.echo(formatText('bold', 'Command Line Resum&eacute;'))
+        this.echo(formatText('bold', 'Terminal Resum&eacute;'))
         this.echo('Available commands:')
         this.echo('  ' + formatText('bold', 'whoami') + '        basic info')
         this.echo('  ' + formatText('bold', 'experience') + '    work and volunteer experience')
@@ -26,10 +25,14 @@ $(document).ready(function () {
       },
       whoami: function () {
         this.echo(resumeHelper.getBasics())
+        this.echo(resumeHelper.getEducation())
       },
       experience: function () {
         this.echo(resumeHelper.getWork())
         this.echo(resumeHelper.getVolunteer())
+      },
+      about: function () {
+        this.echo('This website is made with terminal-resume.')
       }
     },
     {

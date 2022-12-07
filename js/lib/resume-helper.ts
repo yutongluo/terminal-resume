@@ -2,6 +2,7 @@ import { Experience } from '../sections/experience'
 import { formatText } from './style'
 import resume from '../resume.json'
 import { Basics } from '../sections/basics'
+import { Education } from '../sections/education'
 
 export class ResumeHelper {
   getWork (): string {
@@ -25,8 +26,21 @@ export class ResumeHelper {
   getBasics (): string {
     let str = ''
     if (resume.basics !== undefined) {
+      str += formatText('heading', 'BASICS') + '\n'
       const basics = new Basics(resume.basics)
       str += basics.toString()
+    }
+    return str
+  }
+
+  getEducation (): string {
+    let str = ''
+    if (resume.education !== undefined) {
+      str += formatText('heading', 'EDUCATION') + '\n'
+      resume.education.forEach(edu => {
+        const education = new Education(edu)
+        str += education.toString()
+      })
     }
     return str
   }

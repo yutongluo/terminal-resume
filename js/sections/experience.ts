@@ -35,7 +35,9 @@ export class Experience {
     if (this.experience.startDate !== undefined) {
       // right align dates
       const startDate = new Date(this.experience.startDate)
-      const endDate = this.experience.endDate === undefined ? undefined : new Date(this.experience.endDate)
+      const endDate = this.experience.endDate === undefined
+        ? undefined
+        : new Date(this.experience.endDate)
       const dates = style.formatDate(startDate) + '-' + style.formatDate(endDate)
       str += ' '.repeat(ColWidth - this.experience.position.length - dates.length)
       str += style.formatText('violet', dates)
