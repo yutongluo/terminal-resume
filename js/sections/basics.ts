@@ -1,6 +1,7 @@
 
 import { createLink, formatText, splitLines } from '../lib/style'
 import { hasContent } from '../lib/utils'
+import type { ISection } from './isection'
 
 class Profile {
   readonly network: string
@@ -19,7 +20,7 @@ class Profile {
 
     // right align username
     if (hasContent(this.url)) {
-      str += createLink(this.username, this.url) + '\n'
+      str += createLink(this.username, this.url as string) + '\n'
     } else {
       str += formatText('blue', this.username)
     }
@@ -45,7 +46,7 @@ interface JsonBasics {
   profiles: JsonProfile[] | undefined
 }
 
-export class Basics {
+export class Basics implements ISection {
   private readonly basics: JsonBasics
 
   constructor (basics: JsonBasics) {
@@ -71,7 +72,7 @@ export class Basics {
     }
 
     if (hasContent(this.basics.summary)) {
-      str += `${formatText('bold', 'Summary: ')}\n${splitLines(this.basics.summary as string)}\n\n`
+      str += `${formatText('bold', 'Summary: ')}\n${splitLines(this.basics.summary as string)}\n`
     }
 
     if (this.basics.profiles !== undefined) {

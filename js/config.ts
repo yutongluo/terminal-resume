@@ -19,7 +19,10 @@ export const StyleConfig: { [id: string]: string } = {
   heading: '[[bu;#268bd2;]',
   company: '[[;#268bd2;]',
   skill: '[[bg;#859900;]',
-  url: '[[bu!;#6c71c4;]'
+  url: '[[bu!;#6c71c4;]',
+  role: '[[;#b58900;]',
+  location: '[[;#cb4b16;]',
+  date: '[[;#6c71c4;]'
 }
 
 export const Greetings: string =

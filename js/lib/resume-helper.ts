@@ -3,56 +3,50 @@ import { formatText } from './style'
 import resume from '../resume.json'
 import { Basics } from '../sections/basics'
 import { Education } from '../sections/education'
+import { Language } from '../sections/language'
+import { Skill } from '../sections/skill'
+import { Interest } from '../sections/interest'
+import { Reference } from '../sections/reference'
+import { Award } from '../sections/award'
+import type { ISection } from '../sections/isection'
+import { Publication } from '../sections/publications'
+import { Project } from '../sections/projects'
 
 export class ResumeHelper {
-  getWork (): string {
-    let str = ''
-    if (resume.work !== undefined) {
-      str += formatText('heading', 'WORK') + '\n'
-      str += this.formatExperience(resume.work)
-    }
-    return str
+  private readonly ClassMapping: { [name: string]: new (s: any) => ISection } = {
+    education: Education,
+    awards: Award,
+    interests: Interest,
+    skills: Skill,
+    languages: Language,
+    references: Reference,
+    work: Experience,
+    volunteer: Experience,
+    basics: Basics,
+    publications: Publication,
+    projects: Project
   }
 
-  getVolunteer (): string {
-    let str = ''
-    if (resume.volunteer !== undefined) {
-      str += formatText('heading', 'VOLUNTEER') + '\n'
-      str += this.formatExperience(resume.volunteer)
+  getSection (sectionName: string): string {
+    const SectionClass = this.ClassMapping[sectionName]
+    if (SectionClass === undefined) {
+      throw new Error('Unknown section ' + sectionName)
     }
-    return str
-  }
-
-  getBasics (): string {
     let str = ''
-    if (resume.basics !== undefined) {
-      str += formatText('heading', 'BASICS') + '\n'
-      const basics = new Basics(resume.basics)
-      str += basics.toString()
+    const jsonSection = resume[sectionName]
+    if (jsonSection !== undefined) {
+      if (Array.isArray(jsonSection) && jsonSection.length > 0) {
+        str += formatText('heading', sectionName.toUpperCase()) + '\n'
+        jsonSection.forEach((sectionContent: any) => {
+          const section = new SectionClass(sectionContent)
+          str += section.toString()
+        })
+      } else {
+        str += formatText('heading', sectionName.toUpperCase()) + '\n'
+        const section = new SectionClass(jsonSection)
+        str += section.toString()
+      }
     }
-    return str
-  }
-
-  getEducation (): string {
-    let str = ''
-    if (resume.education !== undefined) {
-      str += formatText('heading', 'EDUCATION') + '\n'
-      resume.education.forEach(edu => {
-        const education = new Education(edu)
-        str += education.toString()
-      })
-    }
-    return str
-  }
-
-  private formatExperience (experiences: any): string {
-    let str = ''
-    experiences
-      .forEach((exp: any) => {
-        const experience = new Experience(exp
-        )
-        str += `${experience.toString()}\n`
-      })
     return str
   }
 }

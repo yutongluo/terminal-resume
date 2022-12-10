@@ -108,12 +108,18 @@
         "MP4",
         "GIF"
       ]
+    },
+    {
+      "name": "Azure"
     }
   ],
   "languages": [
     {
       "language": "English",
       "fluency": "Native speaker"
+    },
+    {
+      "language": "Chinese"
     }
   ],
   "interests": [
@@ -123,6 +129,8 @@
         "Ferrets",
         "Unicorns"
       ]
+    },{
+      "name": "Philosophy"
     }
   ],
   "references": [

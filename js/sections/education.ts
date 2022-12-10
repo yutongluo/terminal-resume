@@ -1,6 +1,7 @@
 import { ColWidth } from '../config'
 import { formatBullet, formatDate, formatText } from '../lib/style'
 import { hasContent } from '../lib/utils'
+import type { ISection } from './isection'
 
 interface JsonEducation {
   institution: string
@@ -13,7 +14,7 @@ interface JsonEducation {
   courses: string[] | undefined
 }
 
-export class Education {
+export class Education implements ISection {
   private readonly education: JsonEducation
 
   constructor (education: JsonEducation) {
@@ -30,7 +31,7 @@ export class Education {
         : new Date(this.education.endDate)
       const dates = formatDate(startDate) + '-' + formatDate(endDate)
       str += ' '.repeat(ColWidth - this.education.institution.length - dates.length)
-      str += formatText('violet', dates)
+      str += formatText('date', dates)
     }
     str += '\n'
     if (hasContent(this.education.url)) {

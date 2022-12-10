@@ -1,6 +1,7 @@
 import * as style from '../lib/style'
 import { ColWidth } from '../config'
 import { hasContent } from '../lib/utils'
+import type { ISection } from './isection'
 
 type JsonExperience = {
   position: string
@@ -12,7 +13,7 @@ type JsonExperience = {
   highlights: string[] | undefined
 } & ({ name: string } | { organization: string }) // one of name or organization required
 
-export class Experience {
+export class Experience implements ISection {
   private readonly experience: JsonExperience
 
   constructor (experience: JsonExperience) {
@@ -27,11 +28,11 @@ export class Experience {
     if (hasContent(this.experience.location)) {
       // right align location
       str += ' '.repeat(ColWidth - name.length - this.experience.location.length)
-      str += style.formatText('violet', this.experience.location)
+      str += style.formatText('location', this.experience.location)
     }
     str += '\n'
 
-    str += style.formatText('yellow', this.experience.position)
+    str += style.formatText('role', this.experience.position)
     if (this.experience.startDate !== undefined) {
       // right align dates
       const startDate = new Date(this.experience.startDate)
@@ -40,7 +41,7 @@ export class Experience {
         : new Date(this.experience.endDate)
       const dates = style.formatDate(startDate) + '-' + style.formatDate(endDate)
       str += ' '.repeat(ColWidth - this.experience.position.length - dates.length)
-      str += style.formatText('violet', dates)
+      str += style.formatText('date', dates)
     }
     str += '\n'
 

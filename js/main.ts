@@ -24,12 +24,19 @@ $(document).ready(function () {
         this.echo('  ' + formatText('bold', 'about') + '         about this site\n\n')
       },
       whoami: function () {
-        this.echo(resumeHelper.getBasics())
-        this.echo(resumeHelper.getEducation())
+        this.echo(resumeHelper.getSection('basics'))
+        this.echo(resumeHelper.getSection('education'))
+        this.echo(resumeHelper.getSection('languages'))
+        this.echo(resumeHelper.getSection('skills'))
+        this.echo(resumeHelper.getSection('interests'))
+        this.echo(resumeHelper.getSection('references'))
       },
       experience: function () {
-        this.echo(resumeHelper.getWork())
-        this.echo(resumeHelper.getVolunteer())
+        this.echo(resumeHelper.getSection('work'))
+        this.echo(resumeHelper.getSection('volunteer'))
+        this.echo(resumeHelper.getSection('awards'))
+        this.echo(resumeHelper.getSection('publications'))
+        this.echo(resumeHelper.getSection('projects'))
       },
       about: function () {
         this.echo('This website is made with terminal-resume.')
