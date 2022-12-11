@@ -1,8 +1,13 @@
 {
   "name": "terminal-resume",
   "version": "0.0.1",
-  "description": "",
-  "keywords": ["cv", "resume"],
+  "description": "A terminal based resume website based on JSON Resume and jquery-terminal",
+  "keywords": [
+    "cv",
+    "resume",
+    "terminal-resume",
+    "terminal"
+  ],
   "license": "MIT",
   "author": "Yutong Luo",
   "scripts": {
@@ -10,7 +15,7 @@
     "build": "npm run clean:output && parcel build index.html",
     "dev": "parcel index.html --open",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "zip": "cd dist && zip -rX website.zip * && mv website.zip .. && cd ..",
+    "zip": "cd dist && bestzip ../website.zip * && cd ..",
     "publish": "npm run build && npm run zip",
     "analyze": "parcel build index.html --reporter @parcel/reporter-bundle-analyzer"
   },
@@ -20,6 +25,7 @@
     "@parcel/reporter-bundle-analyzer": "^2.8.0",
     "@tsconfig/strictest": "^1.0.2",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "bestzip": "^2.2.1",
     "buffer": "^5.7.1",
     "eslint": "^8.28.0",
     "eslint-config-standard-with-typescript": "^23.0.0",

@@ -1,7 +1,40 @@
-export const ColWidth = 80
-export const BulletPtIndent = 2
+import { SectionCommand } from './lib/section-command'
 
-export const StyleConfig: { [id: string]: string } = {
+// modify which commands show which resume sections here
+// section names need to be valid json resume key (i.e. basics, work)
+export const SectionCommands: SectionCommand[] = [
+  new SectionCommand('whoami', 'basic info',
+    [
+      'basics',
+      'education',
+      'languages',
+      'skills',
+      'interests',
+      'references'
+    ]),
+  new SectionCommand('experience', 'work and volunteer experience',
+    [
+      'work',
+      'volunteer'
+    ]),
+  new SectionCommand('achievements', 'proudest moments',
+    [
+      'awards',
+      'publications',
+      'projects'
+    ])
+]
+
+// Formatting, whitespaces, indentations
+export const Format = {
+  CharsPerLine: 80, //  maximal number of characters that may appear on a single line
+  BulletPtIndent: 2, // indentation of each bullet point
+  SectionStart: '', // inserted before each section
+  SectionEnd: '\n' // inserted after each section
+}
+
+// font style
+export const FontStyle: { [id: string]: string } = {
   // styles
   // [[!guib;<COLOR>;<BACKGROUND>]some text]
   // b = bold, u = underlined, g = glow, i = italicized

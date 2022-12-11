@@ -1,7 +1,7 @@
 import * as style from '../lib/style'
-import { ColWidth } from '../config'
+import { Format } from '../config'
 import { hasContent } from '../lib/utils'
-import type { ISection } from './isection'
+import type { ISection } from './section.interface'
 import { formatBullet } from '../lib/style'
 
 interface JsonProject {
@@ -35,7 +35,7 @@ export class Project implements ISection {
         ? undefined
         : new Date(this.project.endDate)
       const dates = style.formatDate(startDate) + '-' + style.formatDate(endDate)
-      str += ' '.repeat(ColWidth - this.project.name.length - dates.length)
+      str += ' '.repeat(Format.CharsPerLine - this.project.name.length - dates.length)
       str += style.formatText('date', dates)
     }
     str += '\n'
@@ -46,7 +46,7 @@ export class Project implements ISection {
     // right align project type
     if (this.project.type !== undefined) {
       if (this.project.roles !== undefined && this.project.roles.length > 0) {
-        str += ' '.repeat(ColWidth - this.project.roles.join(', ').length - this.project.type.length)
+        str += ' '.repeat(Format.CharsPerLine - this.project.roles.join(', ').length - this.project.type.length)
       }
       str += style.formatText('magenta', this.project.type) + '\n'
     }

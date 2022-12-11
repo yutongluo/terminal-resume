@@ -1,7 +1,7 @@
-import { ColWidth } from '../config'
+import { Format } from '../config'
 import { formatBullet, formatDate, formatText } from '../lib/style'
 import { hasContent } from '../lib/utils'
-import type { ISection } from './isection'
+import type { ISection } from './section.interface'
 
 interface JsonEducation {
   institution: string
@@ -30,7 +30,7 @@ export class Education implements ISection {
         ? undefined
         : new Date(this.education.endDate)
       const dates = formatDate(startDate) + '-' + formatDate(endDate)
-      str += ' '.repeat(ColWidth - this.education.institution.length - dates.length)
+      str += ' '.repeat(Format.CharsPerLine - this.education.institution.length - dates.length)
       str += formatText('date', dates)
     }
     str += '\n'
@@ -40,7 +40,7 @@ export class Education implements ISection {
     if (hasContent(this.education.score)) {
       const score = `GPA: ${this.education.score as string}`
       if (this.education.url !== undefined) {
-        str += ' '.repeat(ColWidth - this.education.url.length - score.length)
+        str += ' '.repeat(Format.CharsPerLine - this.education.url.length - score.length)
       }
       str += score
     }

@@ -8,12 +8,12 @@ import { Skill } from '../sections/skill'
 import { Interest } from '../sections/interest'
 import { Reference } from '../sections/reference'
 import { Award } from '../sections/award'
-import type { ISection } from '../sections/isection'
+import type { ISection } from '../sections/section.interface'
 import { Publication } from '../sections/publications'
 import { Project } from '../sections/projects'
 
 export class ResumeHelper {
-  private readonly ClassMapping: { [name: string]: new (s: any) => ISection } = {
+  private readonly JsonResumeClassMapping: { [name: string]: new (s: any) => ISection } = {
     education: Education,
     awards: Award,
     interests: Interest,
@@ -28,7 +28,7 @@ export class ResumeHelper {
   }
 
   getSection (sectionName: string): string {
-    const SectionClass = this.ClassMapping[sectionName]
+    const SectionClass = this.JsonResumeClassMapping[sectionName]
     if (SectionClass === undefined) {
       throw new Error('Unknown section ' + sectionName)
     }

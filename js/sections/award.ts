@@ -1,6 +1,6 @@
-import { ColWidth } from '../config'
+import { Format } from '../config'
 import { formatDate, formatText, splitLines } from '../lib/style'
-import type { ISection } from './isection'
+import type { ISection } from './section.interface'
 
 interface JsonAward {
   title: string
@@ -22,7 +22,7 @@ export class Award implements ISection {
 
     if (this.award.date !== undefined) {
       const date = formatDate(new Date(this.award.date))
-      str += ' '.repeat(ColWidth - this.award.title.length - date.length)
+      str += ' '.repeat(Format.CharsPerLine - this.award.title.length - date.length)
       str += formatText('date', date)
     }
     str += '\n'

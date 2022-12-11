@@ -1,7 +1,7 @@
 
 import { createLink, formatText, splitLines } from '../lib/style'
 import { hasContent } from '../lib/utils'
-import type { ISection } from './isection'
+import type { ISection } from './section.interface'
 
 class Profile {
   readonly network: string
@@ -20,7 +20,7 @@ class Profile {
 
     // right align username
     if (hasContent(this.url)) {
-      str += createLink(this.username, this.url as string) + '\n'
+      str += createLink(this.username, this.url as string)
     } else {
       str += formatText('blue', this.username)
     }

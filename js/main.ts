@@ -4,50 +4,62 @@ import { ResumeHelper } from './lib/resume-helper'
 // hack to get jquery working
 import jquery from 'jquery'
 import terminal from 'jquery.terminal'
-import { Greetings } from './config'
+import { SectionCommands, Format, Greetings } from './config'
 const $ = terminal(jquery, this)
 
 const resumeHelper = new ResumeHelper()
+const promptTimeFormatOptions = { hour12: false }
 
 $(document).ready(function () {
-  $('#term').terminal(
-    {
-      help: function () {
-        this.echo(formatText('bold', 'Terminal Resum&eacute;'))
-        this.echo('Available commands:')
-        this.echo('  ' + formatText('bold', 'whoami') + '        basic info')
-        this.echo('  ' + formatText('bold', 'experience') + '    work and volunteer experience')
-        this.echo('  ' + formatText('bold', 'achievements') + '      proudest moments')
-        this.echo('  ' + formatText('bold', 'help  ') + '        this help screen')
-
-        // about should always be last
-        this.echo('  ' + formatText('bold', 'about') + '         about this site\n\n')
-      },
-      whoami: function () {
-        this.echo(resumeHelper.getSection('basics'))
-        this.echo(resumeHelper.getSection('education'))
-        this.echo(resumeHelper.getSection('languages'))
-        this.echo(resumeHelper.getSection('skills'))
-        this.echo(resumeHelper.getSection('interests'))
-        this.echo(resumeHelper.getSection('references'))
-      },
-      experience: function () {
-        this.echo(resumeHelper.getSection('work'))
-        this.echo(resumeHelper.getSection('volunteer'))
-        this.echo(resumeHelper.getSection('awards'))
-        this.echo(resumeHelper.getSection('publications'))
-        this.echo(resumeHelper.getSection('projects'))
-      },
-      about: function () {
-        this.echo('This website is made with terminal-resume.')
-      }
+  const defaultCommands: any = {
+    help: function () {
+      this.echo(formatText('bold', 'Terminal Resum&eacute;'))
+      this.echo('Available commands:')
+      SectionCommands.forEach(command => {
+        this.echo('  ' + formatText('bold', command.name) + ': ' + command.helpText)
+      })
+      this.echo('  ' + formatText('bold', 'help') + ': this help screen')
+      // about should always be last
+      this.echo('  ' + formatText('bold', 'about') + ': about this site\n')
     },
+    about: function () {
+      this.echo('This website is made with terminal-resume.\n')
+    }
+  }
+
+  const sectionCommands: any = {}
+  // dynamically populate sectionCommands from config
+  SectionCommands.forEach(command => {
+    sectionCommands[command.name] = function () {
+      let str = ''
+      command.sections.forEach(section => {
+        str += Format.SectionStart
+        str += resumeHelper.getSection(section)
+        str += Format.SectionEnd
+      })
+      this.echo(str)
+    }
+  })
+
+  const customCommands: any = {
+    // insert your custom commands here
+    // see https://github.com/jcubic/jquery.terminal/wiki/Getting-Started#creating-the-interpreter
+    // for examples on how to use jquery-terminal
+    // terminal-resume uses the object intepreter
+    example: function () {
+      this.echo('This is an example command.\n')
+    }
+  }
+
+  $('#term').terminal(
+    { ...defaultCommands, ...sectionCommands, ...customCommands },
     {
       greetings: Greetings +
-      'Welcome to Command Line Resum&eacute;. Type ' +
+      'Welcome to Terminal Resum&eacute;! Type ' +
       formatText('green', 'help') + ' to start.\n',
       prompt: function (p: (arg0: string) => void) {
-        p('> ')
+        const time = new Date().toLocaleTimeString([], promptTimeFormatOptions)
+        p(formatText('orange', `➜ ${time} admin@resumé ~> `))
       },
       onBlur: function () {
         // prevent losing focus

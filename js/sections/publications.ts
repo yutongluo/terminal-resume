@@ -1,6 +1,6 @@
-import { ColWidth } from '../config'
+import { Format } from '../config'
 import { formatDate, formatText, splitLines } from '../lib/style'
-import type { ISection } from './isection'
+import type { ISection } from './section.interface'
 
 interface JsonPublication {
   name: string
@@ -23,7 +23,7 @@ export class Publication implements ISection {
 
     if (this.publication.releaseDate !== undefined) {
       const date = formatDate(new Date(this.publication.releaseDate))
-      str += ' '.repeat(ColWidth - this.publication.name.length - date.length)
+      str += ' '.repeat(Format.CharsPerLine - this.publication.name.length - date.length)
       str += formatText('date', date)
     }
     str += '\n'

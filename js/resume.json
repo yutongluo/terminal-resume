@@ -18,8 +18,7 @@
     "profiles": [
       {
         "network": "Twitter",
-        "username": "neutralthoughts",
-        "url": ""
+        "username": "neutralthoughts"
       },
       {
         "network": "SoundCloud",

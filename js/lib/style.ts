@@ -1,10 +1,10 @@
-import { ColWidth, StyleConfig, BulletPtIndent } from '../config'
+import { Format, FontStyle } from '../config'
 
 export function formatText (format: string, text: string): string {
-  if (StyleConfig[format] === undefined) {
+  if (FontStyle[format] === undefined) {
     throw new Error(`'Invalid style ${format} selected`)
   }
-  return `${StyleConfig[format] as string}${text}]`
+  return `${FontStyle[format] as string}${text}]`
 };
 
 export function formatDate (date: Date | undefined): string {
@@ -19,7 +19,7 @@ export function formatDate (date: Date | undefined): string {
 }
 
 export function formatBullet (text: string): string {
-  return '* ' + splitLines(text, BulletPtIndent)
+  return '* ' + splitLines(text, Format.BulletPtIndent)
 }
 
 export function createLink (text: string, url: string): string {
@@ -52,15 +52,15 @@ export function splitLines (str: string, indent?: number): string {
       continue
     }
     newColSize = col + word.length + 1
-    if (newColSize > ColWidth && line !== '') {
-      // new word is not going to fit
+    if (newColSize > Format.CharsPerLine && line !== '') {
+      // new word is not going to fit, start a new line
       line += '\n'
       col = 0
       ret += line
       line = indentSpaces
     } else {
       col = newColSize
-      line += `${words[i++]} `
+      line += `${words[i++] as string} `
     }
   }
   // something's left

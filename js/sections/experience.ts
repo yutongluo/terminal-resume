@@ -1,7 +1,7 @@
 import * as style from '../lib/style'
-import { ColWidth } from '../config'
+import { Format } from '../config'
 import { hasContent } from '../lib/utils'
-import type { ISection } from './isection'
+import type { ISection } from './section.interface'
 
 type JsonExperience = {
   position: string
@@ -27,7 +27,7 @@ export class Experience implements ISection {
 
     if (hasContent(this.experience.location)) {
       // right align location
-      str += ' '.repeat(ColWidth - name.length - this.experience.location.length)
+      str += ' '.repeat(Format.CharsPerLine - name.length - this.experience.location.length)
       str += style.formatText('location', this.experience.location)
     }
     str += '\n'
@@ -40,7 +40,7 @@ export class Experience implements ISection {
         ? undefined
         : new Date(this.experience.endDate)
       const dates = style.formatDate(startDate) + '-' + style.formatDate(endDate)
-      str += ' '.repeat(ColWidth - this.experience.position.length - dates.length)
+      str += ' '.repeat(Format.CharsPerLine - this.experience.position.length - dates.length)
       str += style.formatText('date', dates)
     }
     str += '\n'

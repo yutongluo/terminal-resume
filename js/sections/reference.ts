@@ -1,5 +1,5 @@
 import { formatText, splitLines } from '../lib/style'
-import type { ISection } from './isection'
+import type { ISection } from './section.interface'
 
 interface JsonReference {
   name: string

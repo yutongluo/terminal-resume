@@ -1,5 +1,5 @@
 import { formatBullet, formatText } from '../lib/style'
-import type { ISection } from './isection'
+import type { ISection } from './section.interface'
 
 interface JsonSkill {
   name: string
