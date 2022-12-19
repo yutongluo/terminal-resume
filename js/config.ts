@@ -51,6 +51,7 @@ export const FontStyle: { [id: string]: string } = {
   cyan: '[[;#2aa198;]',
   heading: '[[bu;#268bd2;]',
   company: '[[;#268bd2;]',
+  description: '[[i;#268bd2;]',
   skill: '[[bg;#859900;]',
   url: '[[bu!;#6c71c4;]',
   role: '[[;#b58900;]',

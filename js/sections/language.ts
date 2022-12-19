@@ -3,7 +3,7 @@ import type { ISection } from './section.interface'
 
 interface JsonLanguage {
   language: string
-  fluency: string
+  fluency: string | undefined
 }
 
 export class Language implements ISection {

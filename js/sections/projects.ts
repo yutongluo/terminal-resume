@@ -40,6 +40,10 @@ export class Project implements ISection {
     }
     str += '\n'
 
+    if (hasContent(this.project.entity)) {
+      str += style.formatText('description', this.project.entity as string) + '\n'
+    }
+
     if (this.project.roles !== undefined && this.project.roles.length > 0) {
       str += style.formatText('role', this.project.roles.join(', '))
     }

@@ -14,12 +14,13 @@ export function formatDate (date: Date | undefined): string {
 
   const formatter = new Intl.DateTimeFormat(
     'en-US',
-    { year: 'numeric', month: 'short' })
+    { year: 'numeric', month: 'short', timeZone: 'UTC' })
   return formatter.format(date)
 }
 
 export function formatBullet (text: string): string {
-  return '* ' + splitLines(text, Format.BulletPtIndent)
+  if (text === '') return ''
+  return '*' + ' '.repeat(Format.BulletPtIndent - 1) + splitLines(text, Format.BulletPtIndent)
 }
 
 export function createLink (text: string, url: string): string {
@@ -34,9 +35,6 @@ export function createLink (text: string, url: string): string {
   */
 export function splitLines (str: string, indent?: number): string {
   const words = str.split(' ')
-  if (words === undefined) {
-    return ''
-  }
   let col = 0
   let newColSize = 0
   let line = ''

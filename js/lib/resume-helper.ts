@@ -33,7 +33,7 @@ export class ResumeHelper {
       throw new Error('Unknown section ' + sectionName)
     }
     let str = ''
-    const jsonSection = resume[sectionName]
+    const jsonSection = resume[sectionName as keyof typeof resume]
     if (jsonSection !== undefined) {
       if (Array.isArray(jsonSection) && jsonSection.length > 0) {
         str += formatText('heading', sectionName.toUpperCase()) + '\n'

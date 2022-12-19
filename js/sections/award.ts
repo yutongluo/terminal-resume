@@ -26,7 +26,7 @@ export class Award implements ISection {
       str += formatText('date', date)
     }
     str += '\n'
-
+    str += formatText('description', this.award.awarder) + '\n'
     str += splitLines(this.award.summary) + '\n'
     return str
   }

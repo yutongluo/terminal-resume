@@ -6,6 +6,7 @@ scripts
 .swp
 .parcel-cache
 website.zip
+coverage
 
 .vscode/*
 !.vscode/settings.json

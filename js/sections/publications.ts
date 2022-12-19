@@ -29,7 +29,7 @@ export class Publication implements ISection {
     str += '\n'
 
     if (this.publication.publisher !== undefined) {
-      str += formatText('blue', this.publication.publisher) + '\n'
+      str += formatText('description', this.publication.publisher) + '\n'
     }
 
     if (this.publication.url !== undefined) {

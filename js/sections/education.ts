@@ -23,7 +23,7 @@ export class Education implements ISection {
 
   public toString = (): string => {
     let str = ''
-    str += this.education.institution
+    str += formatText('company', this.education.institution)
     if (this.education.startDate !== undefined) {
       const startDate = new Date(this.education.startDate)
       const endDate = this.education.endDate === undefined
@@ -34,17 +34,27 @@ export class Education implements ISection {
       str += formatText('date', dates)
     }
     str += '\n'
-    if (hasContent(this.education.url)) {
-      str += formatText('url', this.education.url as string)
+
+    let areaStr = ''
+    if (hasContent(this.education.area)) {
+      if (hasContent(this.education.studyType)) {
+        areaStr = `${this.education.studyType as string} in `
+      }
+      areaStr += this.education.area as string
+      str += formatText('description', areaStr)
     }
     if (hasContent(this.education.score)) {
       const score = `GPA: ${this.education.score as string}`
-      if (this.education.url !== undefined) {
-        str += ' '.repeat(Format.CharsPerLine - this.education.url.length - score.length)
+      if (this.education.area !== undefined) {
+        str += ' '.repeat(Format.CharsPerLine - areaStr.length - score.length)
       }
       str += score
     }
     str += '\n'
+
+    if (hasContent(this.education.url)) {
+      str += formatText('url', this.education.url as string) + '\n'
+    }
     if (this.education.courses !== undefined) {
       this.education.courses.forEach(course => {
         str += formatBullet(course) + '\n'

@@ -5,8 +5,9 @@ import type { ISection } from './section.interface'
 
 type JsonExperience = {
   position: string
-  location: string
-  url: string
+  location: string | undefined
+  description: string | undefined
+  url: string | undefined
   startDate: Date | undefined
   endDate: Date | undefined
   summary: string | undefined
@@ -27,10 +28,18 @@ export class Experience implements ISection {
 
     if (hasContent(this.experience.location)) {
       // right align location
-      str += ' '.repeat(Format.CharsPerLine - name.length - this.experience.location.length)
-      str += style.formatText('location', this.experience.location)
+      const location = this.experience.location as string
+      str += ' '.repeat(Format.CharsPerLine - name.length - location.length)
+      str += style.formatText('location', location)
     }
     str += '\n'
+
+    if (hasContent(this.experience.description)) {
+      str += style.formatText(
+        'description',
+        style.splitLines(this.experience.description as string)
+      ) + '\n'
+    }
 
     str += style.formatText('role', this.experience.position)
     if (this.experience.startDate !== undefined) {
@@ -46,7 +55,7 @@ export class Experience implements ISection {
     str += '\n'
 
     if (hasContent(this.experience.url)) {
-      str += style.splitLines(style.formatText('url', this.experience.url)) + '\n'
+      str += style.splitLines(style.formatText('url', this.experience.url as string)) + '\n'
     }
 
     if (hasContent(this.experience.summary)) {

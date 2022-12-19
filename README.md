@@ -1,15 +1,29 @@
-# [yutongluo.com](https://yutongluo.com)
+# terminal-resume
 
-Personal website made with HTML5 Boilerplate and JQuery Terminal.
+Turn your resume into a terminal-based website.
 
 ## Features
 
-* Solarized dark color themed terminal interface
-* bio / experience / projects as commands
-* Common *nix commands like ls, cd, cat, pwd are implemented for fun.
+* Supports valid resume in [JSON resume format](https://jsonresume.org/)
+* Customizable commands and sections
+* Auto-complete, other terminal features from [JQuery Terminal](https://terminal.jcubic.pl/)
+* Implement your own commands to flex your programming skills
 
-## Building
+## Building Locally
+
 `npm run dev`
 
 ## Packaging
-`npm run build`
+
+`npm run zip`  
+Zips production ready package to be deployed.
+
+## Customization 
+
+- To map different sections to different commands, checkout `SectionCommands` in [config.ts](js/config.ts)
+- To change color, look into [custom.css](css/custom.css) and `FontStyle` in [config.ts](js/config.ts)
+- Want to add your own commands? checkout `customCommands` in [main.ts](js/main.ts) and [JQuery Terminal Docs](https://terminal.jcubic.pl/)
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)

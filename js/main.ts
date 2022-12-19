@@ -59,7 +59,7 @@ $(document).ready(function () {
       formatText('green', 'help') + ' to start.\n',
       prompt: function (p: (arg0: string) => void) {
         const time = new Date().toLocaleTimeString([], promptTimeFormatOptions)
-        p(formatText('orange', `➜ ${time} admin@resumé ~> `))
+        p(formatText('orange', `➜ ${time} guest@resumé ~> `))
       },
       onBlur: function () {
         // prevent losing focus
