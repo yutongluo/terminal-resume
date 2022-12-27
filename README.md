@@ -2,6 +2,8 @@
 
 Turn your resume into a terminal-based website.
 
+![demo](demo.gif)
+
 ## Features
 
 * Supports valid resume in [JSON resume format](https://jsonresume.org/)
