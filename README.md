@@ -12,13 +12,12 @@ Turn your resume into a terminal-based website.
 * Implement your own commands to flex your programming skills
 
 ## Building Locally
-`npm install`
-`npm run dev`
+1. `npm install`
+2. `npm run dev`
 
 ## Packaging
-
+Zips production ready package to be deployed.  
 `npm run zip`  
-Zips production ready package to be deployed.
 
 ## Customization 
 
