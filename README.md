@@ -11,14 +11,15 @@ Turn your resume into a terminal-based website.
 * Auto-complete, other terminal features from [JQuery Terminal](https://terminal.jcubic.pl/)
 * Implement your own commands to flex your programming skills
 
-## Building Locally
+## How to Use
 
-`npm run dev`
-
-## Packaging
-
-`npm run zip`  
-Zips production ready package to be deployed.
+1. Fork and clone the repository
+2. `npm install`
+3. Replace js/resume.json with your own resume in JSON resume format
+4. (Optional) customize, see the Customization section
+5. `npm run dev` to run locally
+6. `npm run zip` to zip a production package
+7. Deploy the zip as static website to your favorite hosting solution
 
 ## Customization 
 
