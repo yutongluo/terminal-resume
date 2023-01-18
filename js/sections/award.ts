@@ -1,5 +1,6 @@
 import { Format } from '../config'
 import { formatDate, formatText, splitLines } from '../lib/style'
+import type { IArraySection } from './array-section.interface'
 import type { ISection } from './section.interface'
 
 interface JsonAward {
@@ -9,7 +10,8 @@ interface JsonAward {
   summary: string
 }
 
-export class Award implements ISection {
+export class Award implements IArraySection {
+  addLineBreaks = true
   private readonly award: JsonAward
 
   constructor (award: JsonAward) {

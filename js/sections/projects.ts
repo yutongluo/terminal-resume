@@ -1,8 +1,8 @@
 import * as style from '../lib/style'
 import { Format } from '../config'
 import { hasContent } from '../lib/utils'
-import type { ISection } from './section.interface'
 import { formatBullet } from '../lib/style'
+import type { IArraySection } from './array-section.interface'
 
 interface JsonProject {
   name: string
@@ -17,7 +17,8 @@ interface JsonProject {
   keywords: string[] | undefined
 }
 
-export class Project implements ISection {
+export class Project implements IArraySection {
+  addLineBreaks = true
   private readonly project: JsonProject
 
   constructor (project: JsonProject) {
