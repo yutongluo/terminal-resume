@@ -70,19 +70,6 @@
         "DB1101 - Basic SQL",
         "CS2011 - Java Introduction"
       ]
-    },
-    {
-      "institution": "University of Waterkii",
-      "url": "https://www.ou.edu/",
-      "area": "Information Technology",
-      "studyType": "Bachelor",
-      "startDate": "2011-06-01",
-      "endDate": "2014-01-01",
-      "score": "4.0",
-      "courses": [
-        "DB1101 - Basic SQL",
-        "CS2011 - Java Introduction"
-      ]
     }
   ],
   "awards": [
@@ -91,22 +78,9 @@
       "date": "2014-11-01",
       "awarder": "Techcrunch",
       "summary": "There is no spoon."
-    },
-    {
-      "title": "Digital Compression Pioneer Award",
-      "date": "2014-11-01",
-      "awarder": "Techcrunch",
-      "summary": "There is no spoon."
     }
   ],
   "publications": [
-    {
-      "name": "Video compression for 3d media",
-      "publisher": "Hooli",
-      "releaseDate": "2014-10-01",
-      "url": "http://en.wikipedia.org/wiki/Silicon_Valley_(TV_series)",
-      "summary": "Innovative middle-out compression algorithm that changes the way we store data."
-    },
     {
       "name": "Video compression for 3d media",
       "publisher": "Hooli",
@@ -159,10 +133,6 @@
     }
   ],
   "references": [
-    {
-      "name": "Erlich Bachman",
-      "reference": "It is my pleasure to recommend Richard, his performance working as a consultant for Main St. Company proved that he will be a valuable addition to any company."
-    },
     {
       "name": "Erlich Bachman",
       "reference": "It is my pleasure to recommend Richard, his performance working as a consultant for Main St. Company proved that he will be a valuable addition to any company."
