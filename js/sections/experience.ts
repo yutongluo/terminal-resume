@@ -67,6 +67,6 @@ export class Experience implements ISection {
         str += style.formatBullet(element) + '\n'
       })
     }
-    return str
+    return str + '\n'
   }
 }

@@ -50,13 +50,13 @@ export const FontStyle: { [id: string]: string } = {
   blue: '[[;#268bd2;]',
   cyan: '[[;#2aa198;]',
   heading: '[[bu;#268bd2;]',
-  company: '[[;#268bd2;]',
+  company: '[[b;#268bd2;]',
   description: '[[i;#268bd2;]',
   skill: '[[bg;#859900;]',
   url: '[[bu!;#6c71c4;]',
-  role: '[[;#b58900;]',
-  location: '[[;#cb4b16;]',
-  date: '[[;#6c71c4;]'
+  role: '[[b;#b58900;]',
+  location: '[[b;#cb4b16;]',
+  date: '[[b;#6c71c4;]'
 }
 
 export const Greetings: string =
