@@ -1,7 +1,7 @@
 import * as style from '../lib/style'
 import { Format } from '../config'
 import { hasContent } from '../lib/utils'
-import type { ISection } from './section.interface'
+import type { IArraySection } from './array-section.interface'
 
 type JsonExperience = {
   position: string
@@ -14,7 +14,8 @@ type JsonExperience = {
   highlights: string[] | undefined
 } & ({ name: string } | { organization: string }) // one of name or organization required
 
-export class Experience implements ISection {
+export class Experience implements IArraySection {
+  addLineBreaks = true
   private readonly experience: JsonExperience
 
   constructor (experience: JsonExperience) {

@@ -33,9 +33,12 @@ $(document).ready(function () {
     sectionCommands[command.name] = function () {
       let str = ''
       command.sections.forEach(section => {
-        str += Format.SectionStart
-        str += resumeHelper.getSection(section)
-        str += Format.SectionEnd
+        const content = resumeHelper.getSection(section)
+        if (content.trimEnd() !== '') {
+          str += Format.SectionStart
+          str += content
+          str += Format.SectionEnd
+        }
       })
       this.echo(str)
     }
