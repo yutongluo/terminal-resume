@@ -53,7 +53,7 @@ export class Project implements IArraySection {
       if (this.project.roles !== undefined && this.project.roles.length > 0) {
         str += ' '.repeat(Format.CharsPerLine - this.project.roles.join(', ').length - this.project.type.length)
       }
-      str += style.formatText('magenta', this.project.type) + '\n'
+      str += style.formatText('bold', this.project.type) + '\n'
     }
 
     if (hasContent(this.project.url)) {

@@ -1,7 +1,6 @@
 import { Format } from '../config'
 import { formatDate, formatText, splitLines } from '../lib/style'
 import type { IArraySection } from './array-section.interface'
-import type { ISection } from './section.interface'
 
 interface JsonAward {
   title: string
@@ -20,7 +19,7 @@ export class Award implements IArraySection {
 
   public toString = (): string => {
     let str = ''
-    str += formatText('bold', this.award.title)
+    str += formatText('company', this.award.title)
 
     if (this.award.date !== undefined) {
       const date = formatDate(new Date(this.award.date))
@@ -28,7 +27,7 @@ export class Award implements IArraySection {
       str += formatText('date', date)
     }
     str += '\n'
-    str += formatText('description', this.award.awarder) + '\n'
+    str += formatText('bold', this.award.awarder) + '\n'
     str += splitLines(this.award.summary) + '\n'
     return str
   }
